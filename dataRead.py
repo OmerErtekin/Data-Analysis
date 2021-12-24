@@ -47,7 +47,7 @@ def ShowLinearRegression(xColumn,yColumn,color = 'red'):
     linearRegression = linear_model.LinearRegression()
     model = linearRegression.fit(xVariable,yVariable)
     
-    #Eger correlation degeri belli bir seviyenin ustundeyse lineer regresyon dogrusunu cizdir. Yoksa corrrelation yok yaz
+    #Lineer regresyon dogrusunun cizimi
     plt.plot(xVariable,model.predict(xVariable),color ='red')
     
     plt.show()
@@ -58,5 +58,5 @@ readedData = pd.read_csv("foot.csv")
 
 
 #ShowModMedianAndDistrubition('Shots pg')
-ShowCorrelationHeatMap()
-ShowLinearRegression('Goals','red_cards')
+#ShowCorrelationHeatMap()
+ShowLinearRegression('Goals','Shots pg')
