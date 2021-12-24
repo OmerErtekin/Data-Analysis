@@ -32,7 +32,7 @@ def ShowModMedianAndDistrubition(arrayName):
 def ShowCorrelationHeatMap():
    # print(readedData.corr())
     plt.figure(figsize = (8,8))
-    sns.heatmap(readedData.corr(),annot = True, cmap ="coolwarm")
+    sns.heatmap(readedData.corr(),annot = True,cmap = 'YlGnBu')
     plt.show()
     
     
@@ -46,7 +46,7 @@ def ShowLinearRegression(xColumn,yColumn,color = 'red'):
     yVariable = pd.DataFrame(readedData[yColumn])
     
 
-    if(abs(readedData[xColumn].corr(readedData[yColumn])) > 0.3):
+    if(abs(readedData[xColumn].corr(readedData[yColumn])) > 0.5):
         linearRegression = linear_model.LinearRegression()
         model = linearRegression.fit(xVariable,yVariable)
     
@@ -62,4 +62,4 @@ readedData = pd.read_csv("foot.csv")
 
 #ShowModMedianAndDistrubition('Shots pg')
 #ShowCorrelationHeatMap()
-ShowLinearRegression('Possession%','AerialsWon')
+ShowLinearRegression('yellow_cards','red_cards')
