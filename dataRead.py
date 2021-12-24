@@ -30,6 +30,7 @@ def ShowModMedianAndDistrubition(arrayName):
 
 
 def ShowCorrelationHeatMap():
+   # print(readedData.corr())
     plt.figure(figsize = (8,8))
     sns.heatmap(readedData.corr(),annot = True, cmap ="coolwarm")
     plt.show()
@@ -40,15 +41,20 @@ def ShowLinearRegression(xColumn,yColumn,color = 'red'):
     plt.xlabel(xColumn)
     plt.ylabel(yColumn)
     
-    
+         
+    label = ['Goals','Shots pg','yellow_cards','red_cards','AerialsWon','Rating','Pass%','Possesion%']  
+        
+        
     xVariable = pd.DataFrame(readedData[xColumn])
     yVariable = pd.DataFrame(readedData[yColumn])
     
-    linearRegression = linear_model.LinearRegression()
-    model = linearRegression.fit(xVariable,yVariable)
+
+    if(abs(readedData[xColumn].corr(readedData[yColumn])) > 0.3):
+        linearRegression = linear_model.LinearRegression()
+        model = linearRegression.fit(xVariable,yVariable)
     
-    #Lineer regresyon dogrusunun cizimi
-    plt.plot(xVariable,model.predict(xVariable),color ='red')
+        #Lineer regresyon dogrusunun cizimi
+        plt.plot(xVariable,model.predict(xVariable),color ='red')
     
     plt.show()
 
@@ -59,4 +65,4 @@ readedData = pd.read_csv("foot.csv")
 
 #ShowModMedianAndDistrubition('Shots pg')
 #ShowCorrelationHeatMap()
-ShowLinearRegression('Goals','Shots pg')
+ShowLinearRegression('Possession%','AerialsWon')
