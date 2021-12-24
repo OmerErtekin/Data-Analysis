@@ -40,9 +40,6 @@ def ShowLinearRegression(xColumn,yColumn,color = 'red'):
     readedData.plot(kind = 'scatter' ,x = xColumn, y = yColumn)
     plt.xlabel(xColumn)
     plt.ylabel(yColumn)
-    
-         
-    label = ['Goals','Shots pg','yellow_cards','red_cards','AerialsWon','Rating','Pass%','Possesion%']  
         
         
     xVariable = pd.DataFrame(readedData[xColumn])
