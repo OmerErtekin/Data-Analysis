@@ -35,9 +35,13 @@ def ShowCorrelationHeatMap():
     sns.heatmap(readedData.corr(),annot = True,cmap = 'YlGnBu')
     plt.show()
     
+def ShowPairPlot():
+    sns.set()
+    sns.pairplot(readedData,height = 1.5)
+    plt.show()
     
-def ShowLinearRegression(xColumn,yColumn,color = 'red'):
-    readedData.plot(kind = 'scatter' ,x = xColumn, y = yColumn)
+def ShowLinearRegression(xColumn,yColumn):
+    readedData.plot(kind = 'scatter' ,x = xColumn, y = yColumn,color='blue')
     plt.xlabel(xColumn)
     plt.ylabel(yColumn)
         
@@ -45,7 +49,8 @@ def ShowLinearRegression(xColumn,yColumn,color = 'red'):
     xVariable = pd.DataFrame(readedData[xColumn])
     yVariable = pd.DataFrame(readedData[yColumn])
     
-
+    
+    plt.text(xVariable.mean(),yVariable.mean()+0.25,'Correlation : {:.2f}'.format(readedData[xColumn].corr(readedData[yColumn])))
     if(abs(readedData[xColumn].corr(readedData[yColumn])) > 0.5):
         linearRegression = linear_model.LinearRegression()
         model = linearRegression.fit(xVariable,yVariable)
@@ -62,4 +67,5 @@ readedData = pd.read_csv("foot.csv")
 
 #ShowModMedianAndDistrubition('Shots pg')
 #ShowCorrelationHeatMap()
-ShowLinearRegression('yellow_cards','red_cards')
+ShowLinearRegression('yellow_cards','Rating')
+#ShowPairPlot()

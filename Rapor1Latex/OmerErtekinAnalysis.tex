@@ -47,15 +47,15 @@ we will try to examine some of factors that will affect the winner of the match.
 \item Which team is better ? : This question will have a great impact about score because as we said,every single match can progress differently. And that's 
 the main reason for this difference.
 \item Can both teams score? : This is a common type of bet and we will shape our score prediction based on the information from this question. There are hundreds of factors that will affect this situation. Therefore we need another questions.
-\item How many shots did the teams take to score a goal? : 	Since we will examine how many positions the teams have entered and how many shots did the
+\item How many shots did the teams take to score a goal? : Since we will examine how many positions the teams have entered and how many shots did the
 teams took, we would have a statistics that will answer to this question.
 \item How many cards did the teams get? :A yellow card can make a huge difference in the defensive performance of the teams in terms of hardness. A red card 
-would make a bigger difference in gam because the team is missing one or more person. Therefore, it will be very difficult for you to create the appropriate area in terms of offense and defense.
+would make a bigger difference in game because the team is missing one or more person. Therefore, it will be very difficult for you to create the appropriate area in terms of offense and defense.
 \item Who plays a more dominant game? :The more you dominant, the more chances you have to score, the less chance of conceding a goal. We have various data to understand who plays more dominant like possession percent, pass percent,aerials won count etc.
 \end{itemize}
 
 \section{Our Data}
-We have 98 team from 5 major soccer league in the world and their data about different things .So let's take a look at data that we have and examine some of the analysis
+We have 98 team from 5 major soccer league in the world and their data about different things. So let's take a look at data that we have and examine some of the analysis
 
 \subsection{Goals}
 We have data on the number of goals scored by teams over the entire season. This data will definitely help us in predicting the score of the match.As you can see from the figure 1, the number of goals has a normal distribution. Its mode (50) , median(50)  and mean (52.18)  are very close to each other.
@@ -137,6 +137,88 @@ When two teams meet each other, it will be difficult to score goals according to
   \label{fig:rate}
 \end{figure}
 
+
+\section{Examine our data to use}
+Since we have enough data to use, let's try to examine which of these data are related to each other. Than we will use related data
+and try to predict the winner of matches.
+\subsection{Overview to variables}
+The most important thing to predict the winner is goal count. If we could predict the team which will score more, we would find the winner of the match. In that case we can start by examining the variables that can affect the number of goals and the relationship between these variables. But before, let's look at all of the correlations between variables at figure 9.
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{HeatMap.png}
+  \caption{Correlation matrix heatmap.}
+  \label{fig:heat}
+\end{figure}
+
+
+\subsection{Look at data pairs}
+We will take some pairs to examine and try to catch a correlation between these two datas. And we will use these pairs to predict our score in our final analysis
+ 
+\subsubsection{Goals and Shots Per Game}
+The duo, which we expect to be the most relevant to each other at first glance, does not mislead us when we look at its graph.We can clearly see that there is a positive correlation between shots and goals in Figure 10. Our correlation coefficient is 0.83 which is really close to 1
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Shots_Goal_corr.png}
+  \caption{Goals and shots correlation.}
+  \label{fig:Shots_Goal_corr}
+\end{figure}
+
+\subsubsection{Goals and Team Ratings}
+The more you score, the better team you are. And the data is confirming us. We can directly say that goal counts and team ratings are relevant(positively). As we can see in figure 11 ,correlation coefficient is 0.85.
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Goal_rank_corr.png}
+  \caption{Goals and rank correlation.}
+  \label{fig:Goal_rank_corrr}
+\end{figure}
+
+
+\subsubsection{Pass and Possessions}
+The more accurate your passes, the longer the ball stays on your feet. Therefore, it is inevitable that these two are related to each other. The pass will affect the team overal power and we will use it to predict our winner. Let's look at positive correlation between pass and possesions in figure 12
+
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{Pass_possesion_corr.png}
+  \caption{Pass and possession correlation.}
+  \label{fig:Pass_possesion_corr}
+\end{figure}
+
+\subsubsection{Yellow cards and Red cards}
+Two yellow cards mean one red cards. So they must be relevant isn't it? No. It is strange but no they haven't a clear correlation. We can examine their relation in figure 13
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{yellow_red_corr.png}
+  \caption{Yellow and Red Cards correlation.}
+  \label{fig:yellow_red}
+\end{figure}
+
+\subsubsection{Possesion and Aerials Won}
+This pair may seem a little unrelated. But actually they aren't completely inrelevant. Teams with a higher percentage of ballplay this season have won less airballs. We can see negative correlation between these two data in figure 14
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{poss_aerials_corr.png}
+  \caption{Possession and Aerials won correlation.}
+  \label{fig:poss_aerials_corr}
+\end{figure}
+
+\subsubsection{Possession and Rating}
+Even some teams have a different strategy like counter attack, in general good teams play more with ball. Our data is confirming us as we can see in figure 15. There is a positive correlation.
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{pos_rating_corr.png}
+  \caption{Possession and Rating correlation.}
+  \label{fig:pos_rating_corr}
+\end{figure}
+
+
+\subsection{Look at all of pairs}
+
+We selected some pairs from our data and examined the relationship between them. We will use interrelated data to complete our analysis. We will try to determine the outcome of the possible match of the teams using each of its associated data. At figure 16, there is a complete pair plot of our data to see clearly the relations between data frames.
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{PairPlot.png}
+  \caption{All data pairs.}
+  \label{fig:pairplot}
+\end{figure}
 
 
 \end{document}
